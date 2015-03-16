@@ -1,0 +1,24 @@
+{
+  "name": "p13eater/backup-lib",
+  "type": "library",
+  "description": "PHP Backup Library",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Craig McMahon",
+      "email": "craig@nositehere.net"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "symfony/yaml": "2.6.*",
+    "psr/log": "~1.0"
+  },
+  "suggest": {
+    "ext-ssh2": "Allows backing up to an SFTP Server"
+  },
+  "autoload": {
+    "psr-4": {"BackupLib\\": "src/BackupLib"}
+  }
+}
