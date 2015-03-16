@@ -97,7 +97,7 @@ class Backup implements LoggerAwareInterface
     protected function getModule($moduleName, $moduleConfig)
     {
         if (!class_exists($moduleName)) {
-            $moduleName = '\\Backup\\Modules\\'.$moduleName;
+            $moduleName = '\\BackupLib\\Modules\\'.$moduleName;
             if (!class_exists($moduleName)) {
                 return false;
             }
@@ -120,7 +120,7 @@ class Backup implements LoggerAwareInterface
     protected function getStorageEngine($storageEngineClassName, $engineConfig)
     {
         if (!class_exists($storageEngineClassName)) {
-            $storageEngineClassName = '\\Backup\\Storage\\'.$storageEngineClassName;
+            $storageEngineClassName = '\\BackupLib\\Storage\\'.$storageEngineClassName;
             if (!class_exists($storageEngineClassName)) {
                 return false;
             }
