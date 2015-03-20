@@ -2,6 +2,8 @@
   "name": "p13eater/backup-lib",
   "type": "library",
   "description": "PHP Backup Library",
+  "keywords": ["Backup"],
+  "homepage": "https://github.com/p13eater/backup-lib",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
@@ -15,8 +17,12 @@
     "symfony/yaml": "2.6.*",
     "psr/log": "~1.0"
   },
+  "require-dev": {
+    "p13eater/google-helper": ">=0.2.1"
+  },
   "suggest": {
-    "ext-ssh2": "Allows backing up to an SFTP Server"
+    "ext-ssh2": "Allows backing up to an SFTP Server",
+    "p13eater/google-helper": "Allows backing up to Google Drive"
   },
   "autoload": {
     "psr-4": {"BackupLib\\": "src/BackupLib"}
