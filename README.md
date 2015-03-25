@@ -7,10 +7,13 @@ Modular backup library allowing easy creation of both backup and storage modules
 ```php
 <?php
 $backup = new \BackupLib\Backup(__DIR__ . '/config.yml');
-$backup->run();
 
 // Optionally set PSR standard logger
 $backup->setLogger($logger);
+
+// Start the backup
+$backup->run();
+
 
 ```
 
