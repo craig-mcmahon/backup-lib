@@ -65,7 +65,7 @@ jobs:
  - pass:
  - port: 3306
  - host: 127.0.0.1
- - file_per_table: true
+ - filePerTable: true
  
 ## Storage
 
