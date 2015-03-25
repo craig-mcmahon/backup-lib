@@ -49,11 +49,12 @@ class File extends BaseModule
                 continue;
             }
             $fileParts = explode(DIRECTORY_SEPARATOR, $dir);
-            $fileName  = end($fileParts).'.'.date('YmdHis').'.tar.gz';
+            $fileName  = end($fileParts).'.tar.gz';
+            $fileRemoteName  = end($fileParts).'.'.date('YmdHis').'.tar.gz';
             $localFile = '/tmp/'.$fileName;
 
             $this->createArchive($localFile, $dir, '-czPf', $this->exclude);
-            $files[] = new \BackupLib\File($fileName, $localFile);
+            $files[] = new \BackupLib\File($fileRemoteName, $localFile);
         }
 
         return $files;

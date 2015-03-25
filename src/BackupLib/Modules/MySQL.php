@@ -89,8 +89,8 @@ class MySQL extends BaseModule
                      > /tmp/mysql-backup/{$database}/dump.sql";
                 $this->exec($cmd);
             }
-            $this->createArchive("/tmp/mysql-backup/{$database}.{$dateString}.tar.gz", "/tmp/mysql-backup/{$database}");
-            $files[] = new File("{$database}.tar.gz", "/tmp/mysql-backup/{$database}.tar.gz");
+            $this->createArchive("/tmp/mysql-backup/{$database}.tar.gz", "/tmp/mysql-backup/{$database}");
+            $files[] = new File("{$database}.{$dateString}.tar.gz", "/tmp/mysql-backup/{$database}.tar.gz");
         }
 
         return $files;
