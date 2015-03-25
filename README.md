@@ -2,19 +2,23 @@
 
 Modular backup library allowing easy creation of both backup and storage modules
 
-##Usage
+## Usage
+
 ```php
 <?php
 $backup = new \BackupLib\Backup(__DIR__ . '/config.yml');
 $backup->run();
 
-```
-Accepts PSR standard logger
+// Optionally set PSR standard logger
+$backup->setLogger($logger);
 
-##Config
-
-Example
 ```
+
+## Config
+
+Example configuration file
+
+```yaml
 settings:
   notification_emails:
     email@dress1.com: Name
@@ -45,31 +49,33 @@ jobs:
 ```
 
 
-##Modules
+## Modules
 
-###File
-####Config Options
+### File
+#### Config Options
  - dirs
  - exclude
 
-###MySQL
-####Config Options
+### MySQL
+#### Config Options
  - user: root
  - pass:
  - port: 3306
  - host: 127.0.0.1
  - file_per_table: true
  
-##Storage
+## Storage
 
-###LocalFile
-####Config Options
+### LocalFile
+#### Config Options
  - location = /tmp
 
-###SSH2
-requires ext-ssh2
+### SSH2
+Backup using the SSH2 extension to a remote SFTP server
 
-####Config Options
+Requires `ext-ssh2`
+
+#### Config Options
 - hostname
 - user
 - pass
@@ -77,3 +83,12 @@ requires ext-ssh2
 - privKey
 - remoteLocation
 - authType
+
+### Google Drive
+Requires `p13eater/google-helper`
+
+#### Config Options
+- clientId
+- clientSecret
+- accessTokenLocation
+- refreshTokenLocation
