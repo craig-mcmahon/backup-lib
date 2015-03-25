@@ -2,7 +2,7 @@
   "name": "p13eater/backup-lib",
   "type": "library",
   "description": "PHP Backup Library",
-  "keywords": ["Backup"],
+  "keywords": [ "backup", "sftp", "Google Drive"],
   "homepage": "https://github.com/p13eater/backup-lib",
   "minimum-stability": "stable",
   "license": "MIT",
