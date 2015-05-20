@@ -6,7 +6,8 @@ use BackupLib\Exception\BackupException,
    Psr\Log\LoggerAwareInterface,
    Psr\Log\LoggerInterface,
    Psr\Log\NullLogger,
-   Symfony\Component\Yaml\Yaml;
+   Symfony\Component\Yaml\Yaml,
+   Symfony\Component\Yaml\Exception\ParseException;
 
 class Backup implements LoggerAwareInterface
 {
@@ -23,12 +24,17 @@ class Backup implements LoggerAwareInterface
      */
     protected $logger = null;
 
-    public function __construct($configFile)
+    /**
+     * @param string $config Yaml config
+     * @throws BackupException
+     */
+    public function __construct($config)
     {
-        if (!file_exists($configFile)) {
-            throw new BackupException("Could not find config file '{$configFile}'");
+        try {
+            $this->config = Yaml::parse($config);
+        } catch (ParseException $e) {
+            throw new BackupException("Could not parse yaml '{$config}'");
         }
-        $this->config = Yaml::parse(file_get_contents($configFile));
     }
 
     /**
