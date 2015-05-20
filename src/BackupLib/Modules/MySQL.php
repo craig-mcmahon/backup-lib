@@ -18,6 +18,7 @@ class MySQL extends BaseModule
        'performance_schema',
        'mysql'
     );
+    protected $includeDatabases = null;
 
     /**
      * @param array $settings
@@ -45,6 +46,9 @@ class MySQL extends BaseModule
         if (isset($settings['excludeDatabases'])) {
             $this->filesPerTable = $settings['excludeDatabases'];
         }
+        if (isset($settings['includeDatabases'])) {
+            $this->filesPerTable = $settings['includeDatabases'];
+        }
 
     }
 
@@ -64,6 +68,10 @@ class MySQL extends BaseModule
             if (in_array($database, $this->excludeDatabases)) {
                 $this->getLogger()
                    ->debug("Skipping backup of database {$database}");
+                continue;
+            }
+            if (is_array($this->includeDatabases) && !in_array($database, $this->includeDatabases)) {
+                $this->getLogger()->debug("Skipping backup of database {$database}");
                 continue;
             }
             $this->getLogger()
